@@ -20,6 +20,16 @@ public class Mission {
         rover2.setCommands("MMRMMRMRRM");
         rovers.add(rover2);
 
+        Rover rover3 = new Rover(grid);
+        rover3.setPosition("0 0 S");
+        rover3.setCommands("MM");
+        rovers.add(rover3);
+
+        Rover rover4 = new Rover(grid);
+        rover4.setPosition("0 0 S");
+        rover4.setCommands("RMM");
+        rovers.add(rover4);
+
         for (Rover rover:rovers) {
             System.out.println(">>>>> Rover " + roverCount++ + " <<<<<");
             System.out.println();

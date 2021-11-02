@@ -17,11 +17,13 @@ public class Grid {
         if (x > this.x || y > this.y){
             System.out.println("M - Cannot move to position (" + x + "," + y + ") as it exceeds the grid boundaries.");
             return false;
+        }else if (x < 0 || y < 0){
+            System.out.println("M - Cannot move to position (" + x + "," + y + ") as it exceeds the grid boundaries.");
+            return false;
         }else if (NumberUtils.isPrimeNumber( x + y)) {
             System.out.println("M - Cannot move to position (" + x + "," + y + ") as (x+y) is a prime number.");
             return false;
-        }
-        else {
+        }else {
             return true;
         }
     }

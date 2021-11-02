@@ -3,6 +3,8 @@ package com.mission.mars;
 import com.mission.mars.utils.CardinalPoints;
 import com.mission.mars.utils.NumberUtils;
 
+import java.util.Locale;
+
 // A Mars rover is a motor vehicle that travels across the surface of the planet Mars upon arrival.
 public class Rover {
 
@@ -78,7 +80,7 @@ public class Rover {
         this.x = Integer.parseInt(pos[0]);
         this.y = Integer.parseInt(pos[1]);
 
-        switch(pos[2]) {
+        switch(pos[2].toUpperCase()) {
             case "N":
                 this.direction = CardinalPoints.N;
                 break;
