@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.mission.mars.mars.MarsApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.212 s - in com.mission.mars.mars.MarsApplicationTests
