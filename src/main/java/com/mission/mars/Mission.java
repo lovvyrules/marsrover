@@ -1,7 +1,5 @@
 package com.mission.mars;
 
-import com.mission.mars.utils.CardinalPoints;
-
 import java.util.ArrayList;
 
 public class Mission {
@@ -9,14 +7,16 @@ public class Mission {
     public static void main(String[] args) {
         Integer roverCount = 1;
         ArrayList<Rover> rovers = new ArrayList<>();
+        Grid grid = new Grid(4, 4);
+        System.out.println();
 
-        Rover rover1 = new Rover();
-        rover1.setPosition(1, 2, CardinalPoints.N);
+        Rover rover1 = new Rover(grid);
+        rover1.setPosition("1 2 N");
         rover1.setCommands("LMLMLMLMM");
         rovers.add(rover1);
 
-        Rover rover2 = new Rover();
-        rover2.setPosition(3, 3, CardinalPoints.E);
+        Rover rover2 = new Rover(grid);
+        rover2.setPosition("3 3 E");
         rover2.setCommands("MMRMMRMRRM");
         rovers.add(rover2);
 

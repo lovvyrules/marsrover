@@ -6,6 +6,9 @@ import com.mission.mars.utils.NumberUtils;
 // A Mars rover is a motor vehicle that travels across the surface of the planet Mars upon arrival.
 public class Rover {
 
+    // upper-right coordinates of the plateau
+    private Grid grid;
+
     // plateau coordinates
     private Integer x = 0;
     private Integer y = 0;
@@ -16,7 +19,8 @@ public class Rover {
     // in order to control a rover, NASA sends a simple string of letters
     private String commands;
 
-    public Rover() {
+    public Rover(Grid grid) {
+        this.grid = grid;
     }
 
     public Integer getX() {
@@ -68,10 +72,28 @@ public class Rover {
     }
 
     // set the x and y coordinates, and the direction the rover is facing
-    public void setPosition(Integer x, Integer y, Integer direction) {
-        this.x = x;
-        this.y = y;
-        this.direction = direction;
+    public void setPosition(String position) {
+        String[] pos = position.split("\\s+");
+
+        this.x = Integer.parseInt(pos[0]);
+        this.y = Integer.parseInt(pos[1]);
+
+        switch(pos[2]) {
+            case "N":
+                this.direction = CardinalPoints.N;
+                break;
+            case "E":
+                this.direction = CardinalPoints.E;
+                break;
+            case "S":
+                this.direction = CardinalPoints.S;
+                break;
+            case "W":
+                this.direction = CardinalPoints.W;
+                break;
+            default:
+                // code block
+        }
     }
 
     // output the x and y coordinates, and the direction the rover is facing
@@ -110,32 +132,24 @@ public class Rover {
     // ... therefore that position will be skipped
     private void stepForward() {
         if (direction == CardinalPoints.N) {
-            if (!NumberUtils.isPrimeNumber( x + (y+1))) {
+            if (this.grid.isValidMove( x,  (y+1))) {
                 this.y++;
                 System.out.println("M - Step forward");
-            }else{
-                System.out.println("M - Cannot move to position (" + x + "," + (y+1) + ") as (x+y) is a prime number.");
             }
         } else if (direction == CardinalPoints.E) {
-            if (!NumberUtils.isPrimeNumber( (x+1) + y)) {
+            if (this.grid.isValidMove( (x+1), y)) {
                 this.x++;
                 System.out.println("M - Step forward");
-            }else{
-                System.out.println("M - Cannot move to position (" + (x+1) + "," + y + ") as (x+y) is a prime number.");
             }
-        } else if (direction == CardinalPoints.S) {
-            if (!NumberUtils.isPrimeNumber( x + (y-1))) {
+        } else if (this.direction == CardinalPoints.S) {
+            if (this.grid.isValidMove( x, (y-1))) {
                 this.y--;
                 System.out.println("M - Step forward");
-            }else{
-                System.out.println("M - Cannot move to position (" + x + "," + (y-1) + ") as (x+y) is a prime number.");
             }
         } else if (direction == CardinalPoints.W) {
-            if (!NumberUtils.isPrimeNumber( (x-1) + y)) {
+            if (this.grid.isValidMove( (x-1), y)) {
                 this.x--;
                 System.out.println("M - Step forward");
-            }else{
-                System.out.println("M - Cannot move to position (" + (x-1) + "," + y + ") as (x+y) is a prime number.");
             }
         }
     }

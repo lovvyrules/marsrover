@@ -3,6 +3,7 @@ package com.mission.mars.utils;
 public class NumberUtils {
 
     public static Boolean isPrimeNumber(Integer number){
+
         // Wikipedia: A prime number (or a prime) is a natural number greater than 1 that is not a product of two smaller natural numbers.
         if (number < 2) return false;
 
